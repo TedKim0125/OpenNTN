@@ -1,0 +1,3 @@
+{
+  "install": "sed -i '/case \\$- in/,/esac/d' ~/.bashrc 2>/dev/null || true; if [ -d /opt/pyenv ]; then grep -qxF 'export PATH=\"/opt/pyenv/shims:/opt/pyenv/bin:$PATH\"' ~/.bashrc 2>/dev/null || echo 'export PATH=\"/opt/pyenv/shims:/opt/pyenv/bin:$PATH\"' >> ~/.bashrc; fi; if command -v nvidia-smi >/dev/null 2>&1; then python3 -m pip install --no-input torch; else python3 -m pip install --no-input torch --index-url https://download.pytorch.org/whl/cpu; fi && python3 -m pip install --no-input -e '.[test]' nbclient ipykernel && (pyenv rehash 2>/dev/null || true)"
+}
